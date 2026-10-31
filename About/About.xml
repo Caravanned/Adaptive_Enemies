@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Adaptive Expression - Population Patch</name>
+  <author>OpenAI</author>
+  <packageId>OmniNerd.CombatEvolution.PopulationPatch</packageId>
+  <supportedVersions>
+    <li>1.7</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>OmniNerd.CombatEvolution.2005</packageId>
+      <displayName>TheCynic - Adaptive Expression</displayName>
+    </li>
+    <li>
+      <packageId>Ludeon.RimWorld.Biotech</packageId>
+      <displayName>Biotech</displayName>
+    </li>
+    <li>
+      <packageId>Ludeon.RimWorld.Royalty</packageId>
+      <displayName>Royalty</displayName>
+    </li>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>OmniNerd.CombatEvolution.2005</li>
+    <li>brrainz.harmony</li>
+    <li>Ludeon.RimWorld.Biotech</li>
+    <li>Ludeon.RimWorld.Royalty</li>
+    <li>OskarPotocki.VFE.Empire</li>
+    <li>Font.Rimesis</li>
+  </loadAfter>
+  <description>
+    A standalone population and expression patch for TheCynic's Adaptive Expression, built for RimWorld 1.7. It requires the original Adaptive Expression mod and Biotech, and uses Royalty for Imperial title checks. It adds no replacement gene system and does not modify the original mod's files.
+
+    PAWN GENERATION
+    During ordinary, non-world pawn generation, eligible non-player adult pawns that do not already have Omni-Adaptive Lite have a 10% chance to receive it. The hook applies across vanilla and modded xenotypes that use the standard RimWorld gene-generation path. Player-faction pawns and world-generation contexts are excluded. The patch does not run a sweep over pawns already in a save.
+
+    AGE AND EXPRESSION
+    The patch controls expression only on Lite expression hediffs that it has explicitly marked as managed; unmarked Adaptive Expression carriers are left alone. Children who already carry the Lite gene express from 1% at birth, rising gradually to 8% by age 18. New gene distribution remains adult-only. Ordinary adult expression starts at 10%, stays relatively restrained through middle age, and rises with age toward a hard 20% maximum. Allele potential can limit expression below those targets.
+
+    IMPERIAL PAWNS
+    Eligible Empire pawns with Count rank or higher receive stronger Lite alleles when the patch generates their gene: both alleles are set in the 0.4-0.5 range. Their expression ceiling scales with title seniority: Count starts at 25%, ranks in between scale progressively, and the Emperor reaches 60%. Their adult expression starts at 85% of their rank ceiling and continues rising with age toward that ceiling. Other generated carriers receive one allele in the 0.1-0.5 range and a second allele of zero.
+
+    RIMESIS
+    When Rimesis is loaded, the patch looks for its saved-gene restoration method and hooks it only when its signature has exactly one Pawn parameter. Restored recurring antagonists who are adult, non-player, living, and not destroyed receive the Lite gene if missing, alleles in the 0.4-0.5 range, and adult expression up to a 50% ceiling. If a Rimesis pawn is also an eligible titled Empire pawn, the higher Imperial rank ceiling applies, so the Emperor remains the most expressive. The enhanced state and assigned ceiling are saved on the pawn's existing expression hediff; the patch does not keep static Pawn references or create duplicate NPC records. If Rimesis changes that restoration method in a future version, the integration may need an update.
+
+    The patch is designed to coexist with Adaptive Expression and Rimesis. Harmony, Biotech, Royalty, and the original Adaptive Expression mod are required; Rimesis and VFE Empire are optional. No in-game testing guarantee is implied.
+  </description>
+</ModMetaData>
